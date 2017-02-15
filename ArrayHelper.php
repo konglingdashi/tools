@@ -20,20 +20,20 @@ class ArrayHelper
 
         foreach ($arr as $key => $value) {
 
-            if (is_string($arr[$key])) {
+            if (is_string($value)) {
                 continue;
-            } elseif (is_numeric($arr[$key])) {
-                $arr[$key] = (string)$arr[$key];
-            } elseif (is_bool($arr[$key])) {
-                $arr[$key] = $arr[$key] ? 'true' : 'false';
-            } elseif (is_array($arr[$key])) {
-                $arr[$key] = self::toString($arr[$key]);
-            } elseif (is_object($arr[$key])) {
-                $arr[$key] = get_class($arr[$key]);
-            } elseif (is_resource($arr[$key])) {
-                $arr[$key] = 'resource of type (' . get_resource_type($arr[$key]) . ')';
+            } elseif (is_numeric($value)) {
+                $arr[$key] = (string)$value;
+            } elseif (is_bool($value)) {
+                $arr[$key] = $value? 'true' : 'false';
+            } elseif (is_array($value)) {
+                $arr[$key] = self::toString($value);
+            } elseif (is_object($value)) {
+                $arr[$key] = get_class($value);
+            } elseif (is_resource($value)) {
+                $arr[$key] = 'resource of type (' . get_resource_type($value) . ')';
             } else {
-                $arr[$key] = (string)$arr[$key];
+                $arr[$key] = (string)$value;
             }
 
         }//end of foreach
